@@ -1,0 +1,1 @@
+web: gunicorn factionRegister.wsgi --log-file -
