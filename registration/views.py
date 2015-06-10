@@ -3,6 +3,9 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
+import logging
+logger = logging.getLogger('testlogger')
+logger.info('This is a simple log message')
 
 from .forms import UserForm, UserProfileForm
 
@@ -53,17 +56,13 @@ def user_login(request):
         user = authenticate(username=username, password=password)
 
         if user:
-            if user.is_active:
-                login(request, user)
-                print "sucess"
-                return HttpResponseRedirect('/')
-            else:
-                return HttpResponse("Your account is disabled.")
+            login(request, user)
+            return HttpResponseRedirect(request.POST.get('next', '/'))
         else:
             return HttpResponse("Invalid login details supplied.")
 
     else:
-        return render_to_response('registration/login.html', {}, context)
+        return render_to_response('registration/login.html', context)
 
 
 def user_logout(request):
