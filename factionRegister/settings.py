@@ -81,6 +81,8 @@ DATABASES['default'] = dj_database_url.config()
 DATABASES['default']['NAME'] = 'factioner'
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
+AUTH_USER_MODEL = 'registration.FactionUser'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

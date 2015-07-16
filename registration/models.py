@@ -1,15 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
-class UserProfile(models.Model):
+class FactionUser(AbstractUser):
     IMPERIAL = 'Imp'
     REPUBLIC = 'Pub'
     FACTION_CHOICES = (
         (IMPERIAL, 'Imperial'),
         (REPUBLIC, 'Republic'),
     )
-    user = models.OneToOneField(User)
     faction = models.CharField(
         max_length=3,
         choices=FACTION_CHOICES,
@@ -17,4 +16,4 @@ class UserProfile(models.Model):
     )
 
     def __unicode__(self):
-        return self.user.username
+        return self.username
