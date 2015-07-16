@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>FR</title>
-    </head>
-
-    <body>
-        {% if registered %}
-        <h1>You have chosen</h1>
-        <a href="/">Return to the homepage.</a><br />
-        {% else %}
-        <h1>Choose your Alliance!</h1>
-
-        <form id="user_form" method="post" action="/register/"
-                enctype="multipart/form-data">
-
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-
-            <input type="submit" name="submit" value="Register" />
-        </form>
-        {% endif %}
-    </body>
+  <head>
+    <title>Register</title>
+    <link rel="stylesheet" href="http://bootswatch.com/paper/bootstrap.min.css">
+  </head>
+  <body>
+      {% if registered %}
+      <h1>You have chosen</h1>
+      <a href="/">Return to the homepage.</a><br />
+      {% else %}
+      <h1>Choose your Alliance!</h1>
+  
+      <form id="user_form" method="post" action="/register/">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="{{ userform.username.id_for_label }}">Username:</label>
+            {{user_form.username}}
+          </div>
+          <div class="form-group">
+            <label for="{{ userform.faction.id_for_label }}">Faction:</label>
+            {{user_form.faction}}
+          </div>
+          <div class="form-group">
+            <label for="{{ userform.email.id_for_label }}">Email:</label>
+            {{user_form.email}}
+          </div>
+          <div class="form-group">
+            <label for="{{ userform.password.id_for_label }}">Password:</label>
+            {{user_form.password}}
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      {% endif %}
+  </body>
 </html>

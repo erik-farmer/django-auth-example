@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
+  <link rel="stylesheet" href="http://bootswatch.com/paper/bootstrap.min.css">
 </head>
 <body>
-    <div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          Faction Registry
+        </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/register/">Register Here</a></li>
+        <li><a href="/login/">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+<!--     <div>
       <h1>Welcome</h1>
       {% if user.is_anonymous %}
         <a href="/register/">Register Here</a>
@@ -14,6 +28,6 @@
         <h2>{{user.username}}</h2>
         <a href="/logout/">logout</a>
       {% endif %}
-    </div>
+    </div> -->
 </body>
 </html>
